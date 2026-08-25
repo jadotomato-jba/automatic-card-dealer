@@ -23,8 +23,13 @@ Simple robotic card dealer built off of a Raspberry Pi Zero 2 W and Arduino Nano
 
 ## Setup Guide
 ### Microcontroller Firmware
+To flash the Arduino sketch, first clone the repository to your local machine. Then open the sketch in the Arduino IDE and plug in your Nano. In the tool menu, set the board and proccessor  to "Arduino Nano" and "ATmega328p (Old Bootloader)", respectively. Required libraries include the standard Arduino and Servo library, and the AccelStepper library by Michael McCauley. Download the AccelStepper library by opening the library menu, searching for AccelStepper, and downloading it. Finally, click the upload button to compile and upload the code to the Nano.
+
 ### Single-board Computer Software
+Clone the repository to the Pi by opening the Raspberry pi terminal. Navigate to your home directory, and then clone the repositroy using `git clone https://github.com/jadotomato-jba/automatic-card-dealer.git` To set up the virtual environment for the Raspberry Pi, navigate to the software directory using `cd ~/automatic-card-dealer/software`. Create the virtual environment using `python3 -m venv venv`. Activate the environment by using `source venv/bin/activate`, and install dependencies by running `pip install -r requirements.txt`. Deactivate the environment using `deactivate`. 
+
 ### Service/Daemon Configuration
+Copy `dealer_startup.service` to the system folder using `sudo cp ~/software/dealer_startup.service /etc/systemd/system/`. Reload the Systemd daemon with `sudo systemctl daemon-reload`. Enable the service on boot with `sudo systemctl1 enable dealer_startup.service`, and finally start the service imedietly using `sudo systemctl start dealer_startup.service`.
 
 ## Engineering Challenges
 
