@@ -1,0 +1,14 @@
+[Unit]
+Description=Card Dealer Python Service
+After=network.target
+
+[Service]
+Type=simple
+User=<YOUR_PI_USERNAME>
+WorkingDirectory=/home/jadotomato/card_dealer
+ExecStart=/home/jadotomato/card_dealer/venv/bin/python /home/jadotomato/card_dealer/brains.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
